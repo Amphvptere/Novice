@@ -1,1 +1,144 @@
-WIP
+local player = game:GetService("Players").LocalPlayer
+local UserID = player.UserId
+local username = player.Name
+local waitrq = math.random(0, 2)
+
+-- Useful Functions
+local function hasChar()
+    if player.Character and player.Character.Parent and player.Character.Parent.Parent and player.Character:FindFirstChild("HumanoidRootPart") then 
+        return true
+    end
+    return false
+end
+local function fireinterest(toTouch)
+    firetouchinterest(toTouch, player.Character.HumanoidRootPart,  0)
+end
+local function collideWith(button) -- Acts as another firetouchinterest
+    button.CastShadow = false
+    button.CanCollide = false
+    button.Transparency = 1
+    task.wait()
+    button.Size = Vector3.new(1000, 1000, 1000)
+    task.wait()
+    button.Size = Vector3.new(0.15, 4, 3.95)
+    button.CastShadow = true
+    button.CanCollide = true
+    button.Transparency = 0
+end
+local function toMyCFrame(object)
+    object.CFrame = player.Character.HumanoidRootPart.CFrame
+end
+local function getError(func)
+    local Fired, Error = pcall(func)
+
+    if not Fired then
+        print(Error)
+    else
+        print("Fired")
+    end
+end
+
+if game.PlaceId == 10325366821 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Amphvptere/Novice/main/OOFTycoon'))()
+elseif game.PlaceId == 9976239895 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Amphvptere/Novice/main/GumballFT'))()
+else
+     -- UI Library Stuff
+     local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+     local Window = OrionLib:MakeWindow({Name = "Novice | No Game Found!", HidePremium = false, SaveConfig = true, ConfigFolder = "OofTycoon", IntroText = "Welcome, "..tostring(player.Name)..".".." Novice Hub"})
+     local function clipboardNotif()
+        OrionLib:MakeNotification({
+            Name = "Copied",
+            Content = "Copied to Clipboard",
+            Image = "rbxassetid://6034439637",
+            Time = 5
+        })
+    end
+
+    -- XXtra prep
+    repeat task.wait() until game:IsLoaded()
+    repeat task.wait() until teamName ~= nil
+    OrionLib:MakeNotification({
+        Name = "Loading...",
+        Content = "Wait()ing to ensure a smooth load.",
+        Image = "rbxassetid://6031260800",
+        Time = waitrq
+    })
+    wait(waitrq)
+
+    -- Home Tab ------------------------------------------------------------------------------------------
+    local HomeTab = Window:MakeTab({
+        Name = "Home",
+        Icon = "rbxassetid://6026568198",
+        PremiumOnly = false
+    })
+    local Section = HomeTab:AddSection({
+        Name = "Credits"
+    })
+    HomeTab:AddButton({
+        Name = "Amp#0114 - Script",
+        Callback = function()
+            setclipboard("Amp#0114")
+            clipboardNotif()
+        end    
+    })
+    HomeTab:AddButton({
+        Name = "shlex#0001 - UI Library",
+        Callback = function()
+            setclipboard("shlex#0001")
+            clipboardNotif()
+        end    
+    })
+    HomeTab:AddButton({
+        Name = "Dvrknvss#0688 - Universal Games ScriptHub",
+        Callback = function()
+            setclipboard("Dvrknvss#0688")
+            clipboardNotif()
+        end    
+    })
+    local Section = HomeTab:AddSection({
+        Name = "Discord"
+    })
+    HomeTab:AddButton({
+        Name = "Novice Hub",
+        Callback = function()
+            setclipboard("discord.gg/yCYWvdEUAE")
+            clipboardNotif()
+        end    
+    })
+    HomeTab:AddButton({
+        Name = "Universal FE/Games ScriptHub",
+        Callback = function()
+            setclipboard("https://discord.gg/YwMrjHhgAn")
+            clipboardNotif()
+        end    
+    })
+    local Section = HomeTab:AddSection({
+        Name = "Version Info"
+    })
+    HomeTab:AddParagraph("1.0.0","Last updated: August 14, 2022")
+
+    -- Teleport Tab ------------------------------------------------------------------------------------------
+    local TPTab = Window:MakeTab({
+        Name = "Supported Games",
+        Icon = "rbxassetid://6031090999",
+        PremiumOnly = false
+    })
+    TPTab:AddParagraph("Supported Games","The game you're in is not currently supported, use the dropdown below to select a game supported by Novice Hub!")
+    _G.gamestoteleport = "Select game to teleport"
+    TPTab:AddDropdown(
+        {Name = "Select Game Here", 
+        Default = "Select Game to Teleport", 
+        Options = {"Gumball Factory Tycoon", "OOF Tycoon!"}, 
+        Callback = function(Value)
+            _G.gamestoteleport = Value
+    end})
+    SectionTeleport:AddButton({Name = "Teleport To Selected Game", Callback = function()
+        if _G.gamestoteleport == "Select Game to Teleport" then
+        elseif _G.gamestoteleport == "OOF Tycoon!" then
+            game:GetService("TeleportService"):Teleport(10325366821, player)
+        elseif _G.gamestoteleport == "Gumball Factory Tycoon" then
+            game:GetService("TeleportService"):Teleport(9976239895, player)
+        end
+    end})
+end
