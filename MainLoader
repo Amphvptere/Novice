@@ -122,25 +122,25 @@ else
     -- Teleport Tab ------------------------------------------------------------------------------------------
     local TPTab = Window:MakeTab({
         Name = "Supported Games",
-        Icon = "rbxassetid://6031090999",
+        Icon = "rbxassetid://6031225814",
         PremiumOnly = false
     })
     TPTab:AddParagraph("Supported Games","The game you're in is not currently supported, use the dropdown below to select a game supported by Novice Hub!")
-    _G.TPto = "Select game to teleport"
+    _G.gamestoteleport = "Select game to teleport"
     TPTab:AddDropdown(
         {Name = "Select Game Here", 
         Default = "Select Game to Teleport", 
         Options = {"Gumball Factory Tycoon", "OOF Tycoon!", "BIG Paintball!"}, 
         Callback = function(Value)
-            _G.TPto = Value
+            _G.gamestoteleport = Value
     end})
     TPTab:AddButton({Name = "Teleport To Selected Game", Callback = function()
-        if _G.TPto == "Select Game to Teleport" then
+        if _G.gamestoteleport == "Select Game to Teleport" then
         elseif _G.gamestoteleport == "OOF Tycoon!" then
             game:GetService("TeleportService"):Teleport(10325366821, player)
-        elseif _G.TPto == "Gumball Factory Tycoon" then
+        elseif _G.gamestoteleport == "Gumball Factory Tycoon" then
             game:GetService("TeleportService"):Teleport(9976239895, player)
-        elseif _G.TPto == "BIG Paintball!" then
+        elseif _G.gamestoteleport == "BIG Paintball!" then
             game:GetService("TeleportService"):Teleport(3527629287, player)
         end
     end})
