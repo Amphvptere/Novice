@@ -134,7 +134,7 @@ else
         Callback = function(Value)
             _G.gamestoteleport = Value
     end})
-    SectionTeleport:AddButton({Name = "Teleport To Selected Game", Callback = function()
+    TPTab:AddButton({Name = "Teleport To Selected Game", Callback = function()
         if _G.gamestoteleport == "Select Game to Teleport" then
         elseif _G.gamestoteleport == "OOF Tycoon!" then
             game:GetService("TeleportService"):Teleport(10325366821, player)
