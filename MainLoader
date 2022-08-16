@@ -59,7 +59,6 @@ else
 
     -- XXtra prep
     repeat task.wait() until game:IsLoaded()
-    repeat task.wait() until teamName ~= nil
     OrionLib:MakeNotification({
         Name = "Loading...",
         Content = "Wait()ing to ensure a smooth load.",
