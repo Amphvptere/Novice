@@ -104,7 +104,7 @@ else
     HomeTab:AddButton({
         Name = "Novice Hub",
         Callback = function()
-            setclipboard("discord.gg/yCYWvdEUAE")
+            setclipboard("https://discord.gg/7y8GZwsm5p")
             clipboardNotif()
         end    
     })
